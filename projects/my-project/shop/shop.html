@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>فروشگاه آنلاین قطعات خودرو</title>
+    <link rel="stylesheet" href="css-shop/shop.css" />
+  </head>
+  <body>
+    <!-- هدر سایت -->
+    <header class="site-header-rtl">
+      <div class="header-container">
+        <div class="header-left">
+          <a href="#" class="brand-logo">
+            <img src="assets/icons/42_car.svg" alt="لوگو فروشگاه" />
+          </a>
+          <a href="#" class="brand-name">یدکی پل سفید</a>
+        </div>
+        <nav class="header-nav" id="headerNav">
+          <ul>
+            <li><a href="../../../index.html">صفحه اصلی</a></li>
+            <li><a href="#special-offers">تخفیفات</a></li>
+            <li><a href="#filters">محصولات</a></li>
+            <li><a href="#footer">تماس با ما</a></li>
+          </ul>
+        </nav>
+        <div class="header-right">
+          <div class="search-box">
+            <input type="text" placeholder="جستجو..." />
+            <button class="search-button">
+              <img
+                src="assets/icons/search-solid.svg"
+                alt=""
+                class="search-icon"
+              />
+            </button>
+          </div>
+          <a
+            href="#"
+            class="cart-button"
+            id="cart-button"
+            onclick="toggleCartDrawer()"
+          >
+            <img
+              src="assets/icons/shopping-cart-solid.svg"
+              alt=""
+              class="cart-icon"
+            />
+            <span class="cart-count" id="cart-item-count">0</span>
+          </a>
+        </div>
+        <button class="mobile-nav-toggle" id="mobileNavToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- پنل سبد خرید (خارج از هدر) -->
+    <div class="cart-drawer" id="cartDrawer">
+      <h3>
+        سبد خرید
+        <button
+          onclick="toggleCartDrawer()"
+          style="
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: #888;
+          "
+        >
+          &times;
+        </button>
+      </h3>
+      <div id="cart-items">
+        <!-- آیتم‌های سبد خرید اینجا اضافه می‌شوند -->
+        <p style="text-align: center; color: #888">سبد خرید خالی است.</p>
+      </div>
+      <div class="cart-total-section">
+        <span class="cart-total-label">مجموع:</span>
+        <span id="cart-total" class="cart-total-amount">0</span>
+        <span style="margin-right: 5px">تومان</span>
+        <!-- می‌توانید دکمه پرداخت را اینجا اضافه کنید -->
+      </div>
+      <button onclick="proceedToCheckout()" class="final-payment">
+        پرداخت نهایی
+      </button>
+    </div>
+    <!-- Overlay برای بستن پنل سبد خرید با کلیک بیرون آن -->
+    <div
+      class="cart-overlay"
+      id="cart-overlay"
+      onclick="toggleCartDrawer()"
+    ></div>
+
+    <main>
+      <!-- اسلایدر -->
+      <section class="hero-banner-css-only">
+        <div class="hero-container-css-only">
+          <!-- اسلاید 1 -->
+          <div
+            class="hero-slide-css-only slide-1"
+            style="background-image: url('assets/images/car1.jpeg')"
+          >
+            <div class="slide-content">
+              <h2>بهترین قطعات خودرو را از ما بخواهید</h2>
+              <p>تنوع بالا، کیفیت عالی، قیمت مناسب</p>
+            </div>
+          </div>
+
+          <!-- اسلاید 2 -->
+          <div
+            class="hero-slide-css-only slide-2"
+            style="background-image: url('assets/images/car2.jpeg')"
+          >
+            <div class="slide-content">
+              <h2>محصولات ویژه فصل</h2>
+              <p>با تخفیف‌های باورنکردنی همین حالا خرید کنید.</p>
+            </div>
+          </div>
+
+          <!-- اسلاید 3 -->
+          <div
+            class="hero-slide-css-only slide-3"
+            style="background-image: url('assets/images/car3.jpg')"
+          >
+            <div class="slide-content">
+              <h2>کیفیت را احساس کنید</h2>
+              <p>قطعاتی که خودروی شما شایسته آن‌هاست.</p>
+              <a href="#footer" class="cta-button">درباره ما</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="categories" class="categories">
+        <div class="container">
+          <h3>دسته بندی محصولات</h3>
+          <div class="category-list">
+            <!-- لینک دسته بندی ها به بخش مربوطه در پایین صفحه -->
+            <div class="category-item">
+              <a href="#filters">
+                <img src="assets/icons/wind-solid.svg" alt="فیلتر هوا" />
+                <h4>فیلترها</h4>
+              </a>
+            </div>
+            <div class="category-item">
+              <a href="#oils">
+                <img src="assets/icons/oil-can-solid.svg" alt="روغن موتور" />
+                <h4>روغن موتور</h4>
+              </a>
+            </div>
+            <div class="category-item">
+              <a href="#brakes">
+                <img src="assets/icons/car-crash-solid.svg" alt="لنت ترمز" />
+                <h4>لنت ترمز</h4>
+              </a>
+            </div>
+            <div class="category-item">
+              <a href="#batteries">
+                <img src="assets/icons/car-battery-solid.svg" alt="باتری" />
+                <h4>باتری</h4>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- تخفیفات -->
+      <section id="special-offers" class="special-offers">
+        <div class="container">
+          <h3>تخفیفات ویژه</h3>
+          <div class="products-grid">
+            <!-- محصول اول -->
+            <div class="product-item discount">
+              <img
+                src="assets/images/Category/engine-oil-daste.jpg"
+                alt="روغن موتور آیسین حجم 4 لیتر"
+              />
+              <h4>روغن موتور آیسین حجم 4 لیتر</h4>
+              <div class="discount-badge">تخفیف ۲۰٪</div>
+              <p class="price-old">۱,۰۰,۰۰۰ تومان</p>
+              <p class="price-new">۸۰۰,۰۰۰ تومان</p>
+              <div class="product-actions">
+                <button
+                  class="add-to-cart-button"
+                  data-product-id="engine-oil-daste"
+                  data-product-name="روغن موتور آیسین حجم 4 لیتر"
+                  data-product-price="800000"
+                  onclick="addProductToCart(this)"
+                >
+                  افزودن به سبد خرید
+                </button>
+                <a href="#" class="details-button">جزئیات بیشتر</a>
+              </div>
+            </div>
+
+            <!-- محصول دوم -->
+            <div class="product-item discount">
+              <img
+                src="assets/images/Category/air-filter-daste.jpg"
+                alt="فیلتر هوای اسپرت"
+              />
+              <h4>فیلتر هوای اسپرت</h4>
+              <div class="discount-badge">تخفیف ۱۵٪</div>
+              <p class="price-old">۱۵۰,۰۰۰ تومان</p>
+              <p class="price-new">۱۲۷,۵۰۰ تومان</p>
+              <div class="product-actions">
+                <button
+                  class="add-to-cart-button"
+                  data-product-id="air-filter-daste"
+                  data-product-name="فیلتر هوای اسپرت"
+                  data-product-price="127500"
+                  onclick="addProductToCart(this)"
+                >
+                  افزودن به سبد خرید
+                </button>
+                <a href="#" class="details-button">جزئیات بیشتر</a>
+              </div>
+            </div>
+
+            <!-- محصول سوم -->
+            <div class="product-item discount">
+              <img
+                src="assets/images/Category/car-battery-daste.jpg"
+                alt="باتری 74 آمپر خودرو شارک"
+              />
+              <h4>باتری 74 آمپر خودرو شارک</h4>
+              <div class="discount-badge">تخفیف ۱۰٪</div>
+              <p class="price-old">۲,۰۰۰,۰۰۰ تومان</p>
+              <p class="price-new">۱,۸۰۰,۰۰۰ تومان</p>
+              <div class="product-actions">
+                <button
+                  class="add-to-cart-button"
+                  data-product-id="car-battery-daste"
+                  data-product-name="باتری 74 آمپر خودرو شارک"
+                  data-product-price="1800000"
+                  onclick="addProductToCart(this)"
+                >
+                  افزودن به سبد خرید
+                </button>
+                <a href="#" class="details-button">جزئیات بیشتر</a>
+              </div>
+            </div>
+
+            <!-- محصول چهارم -->
+            <div class="product-item discount">
+              <img
+                src="assets/images/Category/brake-pad-daste.jpg"
+                alt="لنت ترمز جلو خودرو ام اچ کو"
+              />
+              <h4>لنت ترمز جلو خودرو ام اچ کو</h4>
+              <div class="discount-badge">تخفیف ۲۵٪</div>
+              <p class="price-old">۵۰۰,۰۰۰ تومان</p>
+              <p class="price-new">۳۷۵,۰۰۰ تومان</p>
+              <div class="product-actions">
+                <button
+                  class="add-to-cart-button"
+                  data-product-id="brake-pad-daste"
+                  data-product-name="لنت ترمز جلو خودرو ام اچ کو"
+                  data-product-price="375000"
+                  onclick="addProductToCart(this)"
+                >
+                  افزودن به سبد خرید
+                </button>
+                <a href="#" class="details-button">جزئیات بیشتر</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- بخش محصولات برای هر دسته بندی -->
+
+      <section id="filters" class="product-category">
+        <div class="container">
+          <h3>فیلترها</h3>
+          <div class="product-grid">
+            <!-- محصول 1 -->
+            <div class="product-item">
+              <img
+                src="assets/images/Category/air-filter/oil-filter-405.jpg"
+                alt="فیلتر روغن موتور پژو"
+              />
+              <h4>فیلتر روغن موتور پژو</h4>
+              <p class="price">۱۵۰,۰۰۰ تومان</p>
+              <div class="product-actions">
+                <a href="#" class="details-button">جزئیات بیشتر</a>
+                <button
+                  class="add-to-cart-button"
+                  data-product-id="oil-filter-405"
+                  data-product-name="فیلتر روغن موتور پژو"
+                  data-product-price="150000"
+                  onclick="addProductToCart(this)"
+                >
+                  افزودن به سبد خرید
+                </button>
+              </div>
+            </div>
+            <!-- محصول 2 -->
+            <div class="product-item">
+              <img
+                src="assets/images/Category/air-filter/air-filter-praid.jpg"
+                alt="فیلتر هوای پراید"
+              />
+              <h4>فیلتر هوای پراید</h4>
+              <p class="price">۱۲۰,۰۰۰ تومان</p>
+              <div class="product-actions">
+                <a href="#" class="details-button">جزئیات بیشتر</a>
+                <button
+                  class="add-to-cart-button"
+                  data-product-id="air-filter-praid"
+                  data-product-name="فیلتر هوای پراید"
+                  data-product-price="120000"
+                  onclick="addProductToCart(this)"
+                >
+                  افزودن به سبد خرید
+                </button>
+              </div>
+            </div>
+            <!-- محصول 3 -->
+            <div class="product-item">
+              <img
+                src="assets/images/Category/air-filter/kabin-filter.jpg"
+                alt="فیلتر کابین خودرو"
+              />
+              <h4>فیلتر کابین خودرو</h4>
+              <p class="price">۱۸۰,۰۰۰ تومان</p>
+              <div class="product-actions">
+                <a href="#" class="details-button">جزئیات بیشتر</a>
+                <button
+                  class="add-to-cart-button"
+                  data-product-id="kabin-filter"
+                  data-product-name="فیلتر کابین خودرو"
+                  data-product-price="180000"
+                  onclick="addProductToCart(this)"
+                >
+                  افزودن به سبد خرید
+                </button>
+              </div>
+            </div>
+            <!-- محصول 4 -->
+            <div class="product-item">
+              <img
+                src="assets/images/Category/air-filter/sokht-filter-neisan.jpg"
+                alt="فیلتر سوخت وانت"
+              />
+              <h4>فیلتر سوخت وانت</h4>
+              <p class="price">۲۰۰,۰۰۰ تومان</p>
+              <div class="product-actions">
+                <a href="#" class="details-button">جزئیات بیشتر</a>
+                <button
+                  class="add-to-cart-button"
+                  data-product-id="sokht-filter-neisan"
+                  data-product-name="فیلتر سوخت وانت"
+                  data-product-price="200000"
+                  onclick="addProductToCart(this)"
+                >
+                  افزودن به سبد خرید
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="oils" class="product-category">
+        <div class="container">
+          <h3>روغن موتور</h3>
+          <div class="product-grid">
+            <!-- محصول 1 -->
+            <div class="product-item">
+              <img
+                src="assets/images/Category/engine-oil/engine-oil-otomax.jpg"
+                alt="روغن موتور خودرو اتومکس مدل SL 20W50 حجم 4 لیتر"
+              />
+              <h4>روغن موتور خودرو اتومکس مدل SL 20W50 حجم 4 لیتر</h4>
+              <p class="price">۱,۲۰۰,۰۰۰ تومان</p>
+              <div class="product-actions">
+                <a href="#" class="details-button">جزئیات بیشتر</a>
+                <button
+                  class="add-to-cart-button"
+                  data-product-id="engine-oil-otomax"
+                  data-product-name="روغن موتور خودرو اتومکس"
+                  data-product-price="1200000"
+                  onclick="addProductToCart(this)"
+                >
+                  افزودن به سبد خرید
+                </button>
+              </div>
+            </div>
+            <!-- محصول 2 -->
+            <div class="product-item">
+              <img
+                src="assets/images/Category/engine-oil/engine-oil-parspishro.jpg"
+                alt="روغن موتور پارس سوپر پیشرو مدل 10W-40 SM حجم 4 لیتر"
+              />
+              <h4>روغن موتور پارس سوپر پیشرو مدل 10W-40 حجم 4 لیتر</h4>
+              <p class="price">۱,۵۰۰,۰۰۰ تومان</p>
+              <div class="product-actions">
+                <a href="#" class="details-button">جزئیات بیشتر</a>
+                <button
+                  class="add-to-cart-button"
+                  data-product-id="engine-oil-parspishro"
+                  data-product-name="روغن موتور پارس سوپر پیشرو"
+                  data-product-price="1500000"
+                  onclick="addProductToCart(this)"
+                >
+                  افزودن به سبد خرید
+                </button>
+              </div>
+            </div>
+            <!-- محصول 3 -->
+            <div class="product-item">
+              <img
+                src="assets/images/Category/engine-oil/engine-oil-zado.jpg"
+                alt="روغن موتور خودرو زادو مدل SAE 20W-50-SJ حجم 3.5 لیتر"
+              />
+              <h4>روغن موتور زادو مدل SAE 20W-50-SJ حجم 3.5 لیتر</h4>
+              <p class="price">۱,۷۰۰,۰۰۰ تومان</p>
+              <div class="product-actions">
+                <a href="#" class="details-button">جزئیات بیشتر</a>
+                <button
+                  class="add-to-cart-button"
+                  data-product-id="engine-oil-zado"
+                  data-product-name="روغن موتور زادو "
+                  data-product-price="1700000"
+                  onclick="addProductToCart(this)"
+                >
+                  افزودن به سبد خرید
+                </button>
+              </div>
+            </div>
+            <!-- محصول 4 -->
+            <div class="product-item">
+              <img
+                src="assets/images/Category/engine-oil/engine-oil-aco+.jpg"
+                alt="روغن موتور خودرو اکوپلاس مدل 10W40 SL حجم 4 لیتر"
+              />
+              <h4>روغن موتور اکوپلاس مدل 10W40 SL حجم 4 لیتر</h4>
+              <p class="price">۱,۴۵۰,۰۰۰ تومان</p>
+              <div class="product-actions">
+                <a href="#" class="details-button">جزئیات بیشتر</a>
+                <button
+                  class="add-to-cart-button"
+                  data-product-id="engine-oil-aco+"
+                  data-product-name="روغن موتور اکوپلاس"
+                  data-product-price="1450000"
+                  onclick="addProductToCart(this)"
+                >
+                  افزودن به سبد خرید
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="brakes" class="product-category">
+        <div class="container">
+          <h3>لنت ترمز</h3>
+          <div class="product-grid">
+            <!-- محصول 1 -->
+            <div class="product-item">
+              <img
+                src="assets/images/Category/brake-pad/brake-pad-praid.jpg"
+                alt="لنت ترمز جلو پراید"
+              />
+              <h4>لنت ترمز جلو پراید</h4>
+              <p class="price">۳۵۰,۰۰۰ تومان</p>
+              <div class="product-actions">
+                <a href="#" class="details-button">جزئیات بیشتر</a>
+                <button
+                  class="add-to-cart-button"
+                  data-product-id="brake-pad-praid"
+                  data-product-name="لنت ترمز جلو پراید"
+                  data-product-price="350000"
+                  onclick="addProductToCart(this)"
+                >
+                  افزودن به سبد خرید
+                </button>
+              </div>
+            </div>
+            <!-- محصول 2 -->
+            <div class="product-item">
+              <img
+                src="assets/images/Category/brake-pad/brake-pad-206.jpg"
+                alt="لنت ترمز عقب پژو 206"
+              />
+              <h4>لنت ترمز عقب پژو 206</h4>
+              <p class="price">۴۰۰,۰۰۰ تومان</p>
+              <div class="product-actions">
+                <a href="#" class="details-button">جزئیات بیشتر</a>
+                <button
+                  class="add-to-cart-button"
+                  data-product-id="brake-pad-206"
+                  data-product-name="لنت ترمز عقب پژو 206"
+                  data-product-price="400000"
+                  onclick="addProductToCart(this)"
+                >
+                  افزودن به سبد خرید
+                </button>
+              </div>
+            </div>
+            <!-- محصول 3 -->
+            <div class="product-item">
+              <img
+                src="assets/images/Category/brake-pad/brake-pad-405.jpg"
+                alt="لنت ترمز 405"
+              />
+              <h4>لنت ترمز جلو 405</h4>
+              <p class="price">۴۵۰,۰۰۰ تومان</p>
+              <div class="product-actions">
+                <a href="#" class="details-button">جزئیات بیشتر</a>
+                <button
+                  class="add-to-cart-button"
+                  data-product-id="brake-pad-405"
+                  data-product-name="لنت ترمز جلو 405"
+                  data-product-price="450000"
+                  onclick="addProductToCart(this)"
+                >
+                  افزودن به سبد خرید
+                </button>
+              </div>
+            </div>
+            <!-- محصول 4 -->
+            <div class="product-item">
+              <img
+                src="assets/images/Category/brake-pad/brake-pad-tiba1,2.jpg"
+                alt="لنت ترمز جلو تیبا"
+              />
+              <h4>لنت ترمز جلو تیبا</h4>
+              <p class="price">۳۸۰,۰۰۰ تومان</p>
+              <div class="product-actions">
+                <a href="#" class="details-button">جزئیات بیشتر</a>
+                <button
+                  class="add-to-cart-button"
+                  data-product-id="brake-pad-tiba1,2"
+                  data-product-name="لنت ترمز جلو تیبا"
+                  data-product-price="380000"
+                  onclick="addProductToCart(this)"
+                >
+                  افزودن به سبد خرید
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="batteries" class="product-category">
+        <div class="container">
+          <h3>باتری خودرو</h3>
+          <div class="product-grid">
+            <!-- محصول 1 -->
+            <div class="product-item">
+              <img
+                src="assets/images/Category/car-battery/car-battery-saba.jpg"
+                alt="باتری 60 آمپر صبا باتری"
+              />
+              <h4>باتری 60 آمپر صبا</h4>
+              <p class="price">۳,۵۰۰,۰۰۰ تومان</p>
+              <div class="product-actions">
+                <a href="#" class="details-button">جزئیات بیشتر</a>
+                <button
+                  class="add-to-cart-button"
+                  data-product-id="car-battery-saba"
+                  data-product-name="باتری 60 آمپر صبا"
+                  data-product-price="3500000"
+                  onclick="addProductToCart(this)"
+                >
+                  افزودن به سبد خرید
+                </button>
+              </div>
+            </div>
+            <!-- محصول 2 -->
+            <div class="product-item">
+              <img
+                src="assets/images/Category/car-battery/car-battery-orbital.jpg"
+                alt="باتری اوربیتال"
+              />
+              <h4>باتری 65 آمپر اوربیتال</h4>
+              <p class="price">۴,۲۰۰,۰۰۰ تومان</p>
+              <div class="product-actions">
+                <a href="#" class="details-button">جزئیات بیشتر</a>
+                <button
+                  class="add-to-cart-button"
+                  data-product-id="car-battery-orbital"
+                  data-product-name="باتری 65 آمپر اوربیتال"
+                  data-product-price="4200000"
+                  onclick="addProductToCart(this)"
+                >
+                  افزودن به سبد خرید
+                </button>
+              </div>
+            </div>
+            <!-- محصول 3 -->
+            <div class="product-item">
+              <img
+                src="assets/images/Category/car-battery/car-battery-volga.jpg"
+                alt="باتری 55 آمپر ولگا باتری"
+              />
+              <h4>باتری 55 آمپر ولگا</h4>
+              <p class="price">۳,۰۰۰,۰۰۰ تومان</p>
+              <div class="product-actions">
+                <a href="#" class="details-button">جزئیات بیشتر</a>
+                <button
+                  class="add-to-cart-button"
+                  data-product-id="car-battery-volga"
+                  data-product-name="باتری 55 آمپر ولگا"
+                  data-product-price="3000000"
+                  onclick="addProductToCart(this)"
+                >
+                  افزودن به سبد خرید
+                </button>
+              </div>
+            </div>
+            <!-- محصول 4 -->
+            <div class="product-item">
+              <img
+                src="assets/images/Category/car-battery/car-battery-turbo.jpg"
+                alt="باتری 70 آمپر توربو باتری"
+              />
+              <h4>باتری 70 آمپر توربو</h4>
+              <p class="price">۳,۹۰۰,۰۰۰ تومان</p>
+              <div class="product-actions">
+                <a href="#" class="details-button">جزئیات بیشتر</a>
+                <button
+                  class="add-to-cart-button"
+                  data-product-id="car-battery-turbo"
+                  data-product-name="باتری 70 آمپر توربو"
+                  data-product-price="3900000"
+                  onclick="addProductToCart(this)"
+                >
+                  افزودن به سبد خرید
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="contact-info">
+            <h4>تماس با ما</h4>
+            <p>آدرس: خررم آباد ، خیابان ولیعصر بالاتر از 30 متری پژوهنده</p>
+            <p>تلفن: 09337738521</p>
+            <p>ایمیل: ho3yn.hr69@gmail.com</p>
+          </div>
+          <div class="social-links">
+            <h4>ما را دنبال کنید</h4>
+            <a href="#">اینستاگرام</a>
+            <a href="#">تلگرام</a>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; ۱۴۰۳ نام فروشگاه شما. کلیه حقوق محفوظ است.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js-shop/shop.js"></script>
+    <script src="js-shop/slaid.js"></script>
+  </body>
+</html>
