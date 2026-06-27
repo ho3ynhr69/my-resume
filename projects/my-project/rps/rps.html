@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بازی سنگ، کاغذ، قیچی</title>
+
+    <link rel="stylesheet" href="css-rps/rps.css">
+</head>
+<body>
+    
+
+    <div id="gameWrapper"> <!-- نام wrapper را به gameWrapper تغییر دادم -->
+      <h1>بازی سنگ، کاغذ، قیچی</h1>
+      <div class="choices">
+        <!-- این دکمه‌ها توسط جاوا اسکریپت پر می‌شوند -->
+      </div>
+      <div class="results">
+        <p>
+          انتخاب من: <span id="playerChoice">❔</span> || انتخاب حریف:
+          <span id="computerChoice">❔</span>
+        </p>
+        <p>
+          امتیاز شما: <span id="playerScore">0</span>
+          <br />
+          امتیاز حریف: <span id="computerScore">0</span>
+        </p>
+        <p>مساوی: <span id="equalScore">0</span></p>
+      </div>
+    </div>
+
+
+    <script src="js-rps/rps.js"></script>
+
+</body>
+</html>

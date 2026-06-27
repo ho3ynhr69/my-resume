@@ -1,0 +1,214 @@
+:root {
+  --bg1: #0f172a;
+  --bg2: #111827;
+  --card: rgba(255, 255, 255, 0.08);
+  --stroke: rgba(255, 255, 255, 0.14);
+  --text: rgba(255, 255, 255, 0.92);
+  --muted: rgba(255, 255, 255, 0.65);
+  --shadow: 0 18px 60px rgba(0, 0, 0, 0.45);
+
+  --accent1: #22c55e;
+  --accent2: #3b82f6;
+  --accent3: #a855f7;
+  --danger: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Vazirmatn, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    sans-serif;
+  background: radial-gradient(
+      1200px 700px at 20% 10%,
+      rgba(59, 130, 246, 0.35),
+      transparent 55%
+    ),
+    radial-gradient(
+      900px 600px at 85% 25%,
+      rgba(168, 85, 247, 0.3),
+      transparent 50%
+    ),
+    radial-gradient(
+      900px 600px at 55% 95%,
+      rgba(34, 197, 94, 0.25),
+      transparent 55%
+    ),
+    linear-gradient(135deg, var(--bg1), var(--bg2));
+  color: var(--text);
+  padding: 20px;
+  overflow: hidden;
+}
+
+/* کارت ماشین حساب */
+.calc {
+  width: min(420px, 96vw);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.06)
+  );
+  border: 1px solid var(--stroke);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  position: relative;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.calc::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    135deg,
+    rgba(34, 197, 94, 0.35),
+    rgba(59, 130, 246, 0.28),
+    rgba(168, 85, 247, 0.3)
+  );
+  filter: blur(18px);
+  opacity: 0.35;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.calc-inner {
+  position: relative;
+  z-index: 1;
+  padding: 18px;
+}
+
+/* صفحه نمایش */
+.display {
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  padding: 14px 14px 10px;
+  margin-bottom: 14px;
+}
+
+.display .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.hint {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.2px;
+}
+
+.badge {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+}
+
+.equation {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+  min-height: 20px;
+  word-break: break-word;
+}
+
+.result {
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  text-align: left;
+  direction: ltr; /* برای نمایش عدد روان‌تر */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* شبکه دکمه‌ها */
+.keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+button {
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  border-radius: 16px;
+  padding: 14px 0;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.12s ease,
+    border-color 0.12s ease, box-shadow 0.12s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.18);
+  user-select: none;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+button:active {
+  transform: translateY(0px) scale(0.99);
+}
+
+button.operator {
+  background: linear-gradient(
+    180deg,
+    rgba(59, 130, 246, 0.28),
+    rgba(59, 130, 246, 0.1)
+  );
+  border-color: rgba(59, 130, 246, 0.35);
+}
+button.danger {
+  background: linear-gradient(
+    180deg,
+    rgba(239, 68, 68, 0.28),
+    rgba(239, 68, 68, 0.1)
+  );
+  border-color: rgba(239, 68, 68, 0.38);
+}
+button.equals {
+  grid-column: span 2;
+  background: linear-gradient(
+    180deg,
+    rgba(34, 197, 94, 0.35),
+    rgba(34, 197, 94, 0.12)
+  );
+  border-color: rgba(34, 197, 94, 0.45);
+  box-shadow: 0 18px 40px rgba(34, 197, 94, 0.18);
+}
+
+.small {
+  font-size: 14px;
+  padding: 12px 0;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+/* ریسپانسیو */
+@media (max-width: 360px) {
+  .result {
+    font-size: 28px;
+  }
+  button {
+    font-size: 16px;
+    padding: 12px 0;
+  }
+}
